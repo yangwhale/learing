@@ -1,12 +1,16 @@
 # Section 6: 生成文本 (Generating Text)
 
-## 背景知识
+> 对应原始 PDF Section 6 (pages 37-38) | 共 1 个 Problem，3 分
 
-### Softmax
+现在模型可以训练了，最后需要的是从模型生成文本的能力。
+
+---
+
+## Softmax
 
 语言模型的输出是最终线性层的输出，称为 **logits**。为了将 logits 转换为归一化的概率分布，我们需要对其应用 **softmax** 函数。
 
-### 解码 (Decoding)
+## 解码 (Decoding)
 
 给模型提供一个前缀 token 序列（即 **prompt**），模型会输出词汇表上的概率分布，用于预测下一个 token。然后我们从该分布中采样一个 token，将其追加到输入序列末尾，重复这个过程，直到生成特殊的 `<|endoftext|>` token 或达到最大 token 数。
 
@@ -18,15 +22,17 @@ $$P(x_{t+1} = i \mid x_{1..t}) = \frac{\exp(v_i)}{\sum_j \exp(v_j)}$$
 
 $$v = \text{TransformerLM}(x_{1..t})_t \in \mathbb{R}^{\text{vocab\_size}}$$
 
-### 解码技巧 (Decoder Tricks)
+---
 
-#### 1. Temperature Scaling（公式 23）
+## 解码技巧 (Decoder Tricks)
+
+### 1. Temperature Scaling（公式 23）
 
 $$\text{softmax}(v, \tau)_i = \frac{\exp(v_i / \tau)}{\sum_{j=1}^{\text{vocab\_size}} \exp(v_j / \tau)}$$
 
 当 $\tau \to 0$ 时，分布会集中到最大元素上（趋近于 one-hot 向量），使输出更加确定性。
 
-#### 2. Nucleus (Top-p) Sampling（公式 24，Holtzman et al. [27]）
+### 2. Nucleus (Top-p) Sampling（公式 24，Holtzman et al. [27]）
 
 $$P(x_{t+1} = i \mid q) = \begin{cases} \frac{q_i}{\sum_{j \in V(p)} q_j} & \text{if } i \in V(p) \\ 0 & \text{otherwise} \end{cases}$$
 
@@ -36,7 +42,7 @@ $$P(x_{t+1} = i \mid q) = \begin{cases} \frac{q_i}{\sum_{j \in V(p)} q_j} & \tex
 
 ---
 
-## Problem: Decoding (3 points)
+## Problem (decoding): Decoding (3 points)
 
 实现解码函数，建议支持以下功能：
 

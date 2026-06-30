@@ -12,10 +12,10 @@
 
 ### 你将实现
 
-1. 字节对编码 (BPE) 分词器（[Section 2](02_bpe_training/)）
-2. Transformer 语言模型 (LM)（[Section 3](09_transformer/)）
-3. 交叉熵损失函数和 AdamW 优化器（[Section 4](10_loss_and_optimizer/)）
-4. 训练循环，支持序列化和加载模型与优化器状态（[Section 5](12_training_loop/)）
+1. 字节对编码 (BPE) 分词器（[Section 2](section2_tokenizer/)）
+2. Transformer 语言模型 (LM)（[Section 3](section3_transformer/)）
+3. 交叉熵损失函数和 AdamW 优化器（[Section 4](section4_training/)）
+4. 训练循环，支持序列化和加载模型与优化器状态（[Section 5](section5_training_loop/)）
 
 ### 你将运行
 
@@ -91,49 +91,16 @@ github.com/stanford-cs336/assignment1-basics-leaderboard
 
 ## 2. 作业题目导航
 
-本作业共 **38 道题**，总分约 **130 分**。按主题分为 17 个模块，每个模块对应一个独立文件夹：
+本作业共 **38 道题**，总分约 **130 分**。按 PDF 章节分为 6 个 Section，每个 Section 对应一个独立文件夹：
 
-### Part I: BPE 分词器（Section 2）
-
-| 文件夹 | 题目 | 分值 |
-|--------|------|------|
-| [01_unicode](01_unicode/) | `unicode1` (1pt) + `unicode2` (3pt) | 4 |
-| [02_bpe_training](02_bpe_training/) | `train_bpe` (15pt) + `train_bpe_tinystories` (2pt) + `train_bpe_expts_owt` (2pt) | 19 |
-| [03_tokenizer](03_tokenizer/) | `tokenizer` (15pt) + `tokenizer_experiments` (4pt) | 19 |
-
-### Part II: Transformer 架构（Section 3）
-
-| 文件夹 | 题目 | 分值 |
-|--------|------|------|
-| [04_building_blocks](04_building_blocks/) | `linear` (1pt) + `embedding` (1pt) | 2 |
-| [05_rmsnorm](05_rmsnorm/) | `rmsnorm` (1pt) | 1 |
-| [06_feedforward](06_feedforward/) | `positionwise_feedforward` (2pt) | 2 |
-| [07_rope](07_rope/) | `rope` (2pt) | 2 |
-| [08_attention](08_attention/) | `softmax` (1pt) + `scaled_dot_product_attention` (5pt) + `multihead_self_attention` (5pt) | 11 |
-| [09_transformer](09_transformer/) | `transformer_block` (3pt) + `transformer_lm` (3pt) + `transformer_accounting` (5pt) | 11 |
-
-### Part III: 训练（Section 4-5）
-
-| 文件夹 | 题目 | 分值 |
-|--------|------|------|
-| [10_loss_and_optimizer](10_loss_and_optimizer/) | `cross_entropy` (1pt) + `learning_rate_tuning` (1pt) + `adamw` (2pt) + `adamw_accounting` (2pt) | 6 |
-| [11_lr_schedule_and_clipping](11_lr_schedule_and_clipping/) | `learning_rate_schedule` (1pt) + `gradient_clipping` (1pt) | 2 |
-| [12_training_loop](12_training_loop/) | `data_loading` (2pt) + `checkpointing` (1pt) + `training_together` (4pt) | 7 |
-
-### Part IV: 文本生成（Section 6）
-
-| 文件夹 | 题目 | 分值 |
-|--------|------|------|
-| [13_decoding](13_decoding/) | `decoding` (3pt) | 3 |
-
-### Part V: 实验（Section 7）
-
-| 文件夹 | 题目 | 分值 |
-|--------|------|------|
-| [14_experiments_tinystories](14_experiments_tinystories/) | `experiment_log` (3pt) + `learning_rate` (3pt) + `batch_size_experiment` (1pt) + `generate` (1pt) | 8 |
-| [15_ablations](15_ablations/) | `layer_norm_ablation` (1pt) + `pre_norm_ablation` (1pt) + `no_pos_emb` (1pt) + `swiglu_ablation` (1pt) | 4 |
-| [16_main_experiment](16_main_experiment/) | `main_experiment` (2pt) | 2 |
-| [17_leaderboard](17_leaderboard/) | `leaderboard` (6pt) | 6 |
+| Section | 文件夹 | 主题 | 题目数 | 分值 |
+|---------|--------|------|--------|------|
+| 2 | [section2_tokenizer](section2_tokenizer/) | BPE 分词器 | 7 题 | 42 |
+| 3 | [section3_transformer](section3_transformer/) | Transformer 架构 | 11 题 | 27 |
+| 4 | [section4_training](section4_training/) | 损失函数 + 优化器 + LR 调度 | 6 题 | 8 |
+| 5 | [section5_training_loop](section5_training_loop/) | 数据加载 + Checkpoint + 训练循环 | 3 题 | 7 |
+| 6 | [section6_decoding](section6_decoding/) | 文本生成 (Temperature + Top-p) | 1 题 | 3 |
+| 7 | [section7_experiments](section7_experiments/) | TinyStories + 消融 + OWT + 排行榜 | 10 题 | 22 |
 
 ---
 
